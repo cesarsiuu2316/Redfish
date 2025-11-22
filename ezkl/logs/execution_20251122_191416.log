@@ -1,0 +1,27 @@
+--- Starting Circuit Setup Pipeline ---
+--- Step 1: Data Gen ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/01_gen_data.py", line 1, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+--- Step 2: Settings ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/02_settings.py", line 1, in <module>
+    import ezkl
+ModuleNotFoundError: No module named 'ezkl'
+--- Step 3: Compile ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/03_compile.py", line 1, in <module>
+    import ezkl
+ModuleNotFoundError: No module named 'ezkl'
+--- Step 4: Setup (Keys) ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/04_setup.py", line 1, in <module>
+    import ezkl
+ModuleNotFoundError: No module named 'ezkl'
+--- Step 5: Verifier ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/05_verifier.py", line 1, in <module>
+    import ezkl
+ModuleNotFoundError: No module named 'ezkl'
+--- Pipeline Complete ---

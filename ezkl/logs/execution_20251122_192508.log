@@ -1,0 +1,72 @@
+--- Starting Circuit Setup Pipeline ---
+--- Step 1: Data Gen ---
+2025-11-22 19:25:11,116 - INFO - --- Step 1: Calibration Data ---
+2025-11-22 19:25:11,117 - INFO - Inferred Shape: [1, 16]
+2025-11-22 19:25:11,121 - INFO - Saved to /root/Redfish/ezkl/build/input.json
+--- Step 2: Settings ---
+2025-11-22 19:25:11,604 - INFO - --- Step 2: Settings & Calibration ---
+2025-11-22 19:25:12,135 - INFO - num calibration batches: 1
+2025-11-22 19:25:12,146 - INFO - qmmm_i32: x86_64/avx2 activated
+2025-11-22 19:25:12,146 - INFO - found f16c, added fake-f16 and q40-able kernels
+2025-11-22 19:25:12,146 - INFO - mmm_f32, mmv_f32, sigmoid_f32, tanh_f32: x86_64/fma activated
+2025-11-22 19:25:26,154 - WARNING - 
+
+ <------------- Numerical Fidelity Report (input_scale: 11, param_scale: 11, scale_input_multiplier: 10) ------------->
+
++------------+----------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+| mean_error | median_error   | max_error     | min_error      | mean_abs_error | median_abs_error | max_abs_error | min_abs_error | mean_squared_error | mean_percent_error | mean_abs_percent_error |
++------------+----------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+| 0          | -0.00006252527 | 0.00006252527 | -0.00006252527 | 0.000041683514 | 0.00006252527    | 0.00006252527 | 0             | 0.0000000026062732 | 0.33331248         | 0.3333542              |
++------------+----------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+
+
+2025-11-22 19:25:26,156 - INFO - Settings generated and calibrated
+2025-11-22 19:25:26,157 - INFO - [Settings] Max Memory: 55.73 MB
+--- Step 3: Compile ---
+2025-11-22 19:25:26,237 - INFO - --- Step 3: Compilation ---
+2025-11-22 19:25:26,303 - INFO - Compiled to /root/Redfish/ezkl/build/network.ezkl
+2025-11-22 19:25:26,303 - INFO - [Compile] Max Memory: 27.07 MB
+--- Step 4: Setup (Keys) ---
+2025-11-22 19:25:26,404 - INFO - --- Step 4: SRS & Keys ---
+2025-11-22 19:25:26,416 - INFO - SRS does not exist, downloading...
+2025-11-22 19:25:27,132 - INFO - Saving SRS to disk...
+2025-11-22 19:25:27,150 - INFO - Saved SRS to /root/Redfish/ezkl/build/kzg.srs.
+2025-11-22 19:25:27,151 - INFO - SRS downloaded
+2025-11-22 19:25:27,160 - INFO - read 8388868 bytes from file (vector of len = 8388868)
+2025-11-22 19:25:27,230 - INFO - file hash: 2a1a494630e71bc026dd5c0eab4c1b9a5dbc656228c1f0d48f5dbd3909b161d3
+2025-11-22 19:25:27,231 - INFO - SRS ready
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/04_setup.py", line 34, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/Redfish/ezkl/scripts/04_setup.py", line 21, in main
+    res = ezkl.setup(
+          ^^^^^^^^^^^
+TypeError: setup() got an unexpected keyword argument 'compiled_circuit'
+--- Step 5: Verifier ---
+2025-11-22 19:25:27,360 - INFO - --- Step 5: Verifier Contract ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/05_verifier.py", line 30, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.12/asyncio/runners.py", line 194, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/root/Redfish/ezkl/scripts/05_verifier.py", line 14, in main
+    res = await ezkl.create_evm_verifier(
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Failed to run create_evm_verifier: [pfsys] failed to load vk from file: No such file or directory (os error 2)
+--- Pipeline Complete ---

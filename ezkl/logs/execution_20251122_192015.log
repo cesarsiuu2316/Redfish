@@ -1,0 +1,45 @@
+--- Starting Circuit Setup Pipeline ---
+--- Step 1: Data Gen ---
+2025-11-22 19:20:17,678 - INFO - --- Step 1: Calibration Data ---
+2025-11-22 19:20:17,679 - INFO - Inferred Shape: [1, 16]
+2025-11-22 19:20:17,683 - INFO - Saved to /root/Redfish/ezkl/build/input.json
+--- Step 2: Settings ---
+2025-11-22 19:20:18,149 - INFO - --- Step 2: Settings & Calibration ---
+2025-11-22 19:20:18,667 - INFO - num calibration batches: 1
+2025-11-22 19:20:18,676 - INFO - qmmm_i32: x86_64/avx2 activated
+2025-11-22 19:20:18,676 - INFO - found f16c, added fake-f16 and q40-able kernels
+2025-11-22 19:20:18,676 - INFO - mmm_f32, mmv_f32, sigmoid_f32, tanh_f32: x86_64/fma activated
+2025-11-22 19:20:32,536 - WARNING - 
+
+ <------------- Numerical Fidelity Report (input_scale: 13, param_scale: 13, scale_input_multiplier: 10) ------------->
+
++--------------------+---------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+| mean_error         | median_error  | max_error     | min_error      | mean_abs_error | median_abs_error | max_abs_error | min_abs_error | mean_squared_error | mean_percent_error | mean_abs_percent_error |
++--------------------+---------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+| -0.000000009934108 | 0.00006377697 | 0.00006377697 | -0.00006380677 | 0.000042527914 | 0.00006377697    | 0.00006380677 | 0             | 0.0000000027129354 | -0.000061176215    | 0.000117025826         |
++--------------------+---------------+---------------+----------------+----------------+------------------+---------------+---------------+--------------------+--------------------+------------------------+
+
+
+2025-11-22 19:20:32,538 - INFO - Settings generated and calibrated
+2025-11-22 19:20:32,539 - INFO - [Settings] Max Memory: 46.27 MB
+--- Step 3: Compile ---
+2025-11-22 19:20:32,612 - INFO - --- Step 3: Compilation ---
+2025-11-22 19:20:32,675 - INFO - Compiled to /root/Redfish/ezkl/build/network.ezkl
+2025-11-22 19:20:32,675 - INFO - [Compile] Max Memory: 27.07 MB
+--- Step 4: Setup (Keys) ---
+2025-11-22 19:20:32,740 - INFO - --- Step 4: SRS & Keys ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/04_setup.py", line 22, in <module>
+    main()
+  File "/root/Redfish/ezkl/scripts/04_setup.py", line 8, in main
+    ezkl.get_srs(settings_path=str(SETTINGS_PATH), logrows=None, srs_path=str(SRS_PATH))
+RuntimeError: no running event loop
+--- Step 5: Verifier ---
+2025-11-22 19:20:32,843 - INFO - --- Step 5: Verifier Contract ---
+Traceback (most recent call last):
+  File "/root/Redfish/ezkl/scripts/05_verifier.py", line 21, in <module>
+    main()
+  File "/root/Redfish/ezkl/scripts/05_verifier.py", line 8, in main
+    ezkl.create_evm_verifier(
+RuntimeError: no running event loop
+--- Pipeline Complete ---
