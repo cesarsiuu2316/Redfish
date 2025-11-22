@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+.venv/
+venv/
+
+# Foundry / Ethereum
+out/
+cache/
+broadcast/
+dist/
+
+# EZKL Artifacts
+*.ezkl
+*.key
+*.srs
+*.pf
+*.proof
+witness.json
+settings.json
+pk.key
+vk.key
+
+# Editors
+.vscode/
+.idea/
+.DS_Store
