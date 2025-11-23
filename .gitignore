@@ -32,3 +32,8 @@ ezkl/build/kzg.srs
 ezkl/build/*.ezkl
 ezkl/build/witness.json
 ezkl/build/address.txt
+
+# Environment variables
+.env
+*.env
+\!.env.example
