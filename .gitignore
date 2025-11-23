@@ -26,3 +26,9 @@ model/data/
 ezkl/build/pk.key
 *.pk
 
+
+# EZKL Build Artifacts (reproducible - can be regenerated)
+ezkl/build/kzg.srs
+ezkl/build/*.ezkl
+ezkl/build/witness.json
+ezkl/build/address.txt

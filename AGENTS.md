@@ -19,3 +19,9 @@
 ### 4. Memory Management
 - **Quirk:** Large circuits (high logrows) consume massive RAM during compilation and key generation.
 - **Pattern:** Monitor `resource.getrusage` to prevent OOM kills on smaller instances.
+
+### 5. Foundry & Verifier
+- **Verifier Contract Name:** Generated contract is named `Halo2Verifier`, not `Verifier`.
+- **Verify Function:** `verifyProof(bytes calldata proof, uint256[] calldata instances)`.
+- **Foundry JSON Parsing:** `vm.parseJsonBytes(json, ".proof")` fails if `.proof` is an array. Use `.hex_proof` for raw bytes.
+- **Stack Too Deep:** EZKL Verifiers are massive. Use `via_ir = false` or aggressive optimization (`optimizer_runs = 1`) in `foundry.toml`.
