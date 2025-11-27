@@ -11,18 +11,29 @@ cache/
 broadcast/
 dist/
 
-# EZKL Artifacts
-*.ezkl
-*.key
-*.srs
-*.pf
-*.proof
-witness.json
-settings.json
 pk.key
 vk.key
+
+# data files
+model/data/
 
 # Editors
 .vscode/
 .idea/
 .DS_Store
+
+# EZKL Artifacts
+ezkl/build/pk.key
+*.pk
+
+
+# EZKL Build Artifacts (reproducible - can be regenerated)
+ezkl/build/kzg.srs
+ezkl/build/*.ezkl
+ezkl/build/witness.json
+ezkl/build/address.txt
+
+# Environment variables
+.env
+*.env
+\!.env.example

@@ -1,0 +1,16 @@
+# Generated proofs
+proofs/
+*.json
+
+# Environment
+.env
+*.env
+!.env.example
+
+# Node modules
+node_modules/
+package-lock.json
+
+# Build artifacts
+dist/
+build/
